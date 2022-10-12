@@ -10,7 +10,7 @@ from tensorflow.keras.optimizers import Adam
 vae = vae_model()
 vae.compile(optimizer=Adam())
 
-fpath = read_dirs('data/')
+fpath = read_dirs("data/")
 
 # initialize data generators
 params = {"path": fpath, "dim": 2807, "batch_size": 32, "shuffle": True}
