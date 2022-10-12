@@ -33,5 +33,16 @@ def check_train_data(params):
 
 
 def read_integer(msg):
-    in_ = input("\t", msg)
-    return int(in_)
+    print("------------------------------")
+    msg_prnt = str("\t" + msg)
+    integer = input(msg_prnt)
+    return int(integer)
+
+
+def read_dirs(path="data/"):
+    print("\tWhich data do you want to train with?")
+    print("\tWrite one directory from the following path:",str(path),":\n")
+    for ele in os.listdir(path):
+        print("\t\t", ele)
+    destination = input()
+    return str(path + "/" + destination)
