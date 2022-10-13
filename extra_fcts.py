@@ -39,10 +39,10 @@ def read_integer(msg):
     return int(integer)
 
 
-def read_dirs(path="data/"):
-    print("\tWhich data do you want to train with?")
+def read_dirs(path, msg=""):
+    print(str("\t" + msg))
     print("\tWrite one directory from the following path:", str(path), ":\n")
     for ele in os.listdir(path):
         print("\t\t", ele)
     destination = input()
-    return str(path + "/" + destination)
+    return str(path + destination)
