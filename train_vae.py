@@ -1,8 +1,15 @@
 from datagenerator import DataGenerator
 from extra_fcts import check_train_data, read_integer, read_dirs
-from vae_model import vae_model
 import os
 import numpy as np
+
+vae_choice = input("\tType number:\n\t\t- 1 for simple VAE\n\t\t- 2 for beta-VAE")
+if vae_choice==1:
+    from vae_model import vae_model
+    print("\tUsing simple VAE.")
+else:
+    from vae_beta_model import vae_model
+    print("\tUsing beta VAE.")
 
 from tensorflow.keras.optimizers import Adam
 
