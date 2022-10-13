@@ -119,9 +119,11 @@ def encoder_model(
         x = Conv1D(ch_n, kernel_size, padding="same", strides=1)(x)
         x = BatchNormalization()(x)
         x = Activation("relu")(x)
+
         x = Conv1D(ch_n, kernel_size, padding="same", strides=str_n)(x)
         x = BatchNormalization()(x)
         x = Activation("relu")(x)
+
     x = Flatten()(x)
     z_mean = Dense(latent_dim, name="z_mean")(x)
     z_log_var = Dense(latent_dim, name="z_log_var")(x)
