@@ -1,12 +1,12 @@
 import numpy as np
-from mapper_model import mapper_model
-from datagenerator import DataGenerator_elsig_ref
+from src.mapper_model import mapper_model
+from src.datagenerator import DataGenerator_elsig_ref
 from tensorflow.keras.optimizers import Adam
 from tensorflow import keras
 import os
 from tqdm import tqdm
 
-from extra_fcts import read_dirs, read_integer
+from src.extra_fcts import read_dirs, read_integer, check_train_data
 
 vae_path = read_dirs("vae_models/", "Which vae model do you wan to use?")
 vae = keras.models.load_model(vae_path)
@@ -14,9 +14,8 @@ print("\tLoaded vae successfully.")
 
 fpath = read_dirs("data/", "On which data-set base was this vae trained on?")
 
-print("FPATH:", fpath)
-
 params = {"path": fpath, "dim": 2807, "batch_size": 100, "shuffle": True}
+check_train_data(params)
 
 range_ = read_integer("How many samples do you want to train?\t")
 
