@@ -11,5 +11,5 @@ You have to run this first.
 
 ## 2. Mapper
 
-If the vae run was succesfully, you can train the mapper
+If the vae run was succesfull, you can train the mapper
 based on the same data-set.
