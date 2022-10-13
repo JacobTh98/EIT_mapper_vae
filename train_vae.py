@@ -3,7 +3,9 @@ from extra_fcts import check_train_data, read_integer, read_dirs
 import os
 import numpy as np
 
-vae_choice = input("\tType number:\n\t\t- 1 for simple VAE\n\t\t- 2 for beta-VAE")
+vae_choice = input(
+    "\tType number:\n\t\t- 1 for simple VAE\n\t\t- 2 for beta-VAE\n\tYour number:"
+)
 if vae_choice == 1:
     from vae_model import vae_model
 
