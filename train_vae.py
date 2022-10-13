@@ -5,10 +5,7 @@ import numpy as np
 from tensorflow.keras.optimizers import Adam
 
 vae_choice = input(
-<<<<<<< HEAD
-=======
     "\tType number:\n\t\t- 1 for simple VAE\n\t\t- 2 for beta-VAE\n\tYour choice:"
->>>>>>> src
 )
 if vae_choice == 1:
     from src.vae_model import vae_model
