@@ -5,35 +5,26 @@ from tensorflow.keras.layers import (
     Layer,
     ZeroPadding1D,
     Cropping1D,
-    Dropout,
     Reshape,
     Conv1D,
     Conv1DTranspose,
     BatchNormalization,
     Activation,
-    MaxPooling1D,
     Input,
-    Concatenate,
     Flatten,
     Dense,
-    Add,
 )
 from tensorflow.keras.losses import (
-    Huber,
     binary_crossentropy,
-    mean_squared_error,
-    mean_absolute_error,
 )
 from tensorflow.keras.backend import random_normal
 from tensorflow.keras.metrics import Mean
 from tensorflow.keras.layers import Normalization
-import numpy as np
 
+# parameters of the VAE model
 normalizer = Normalization()
-
 input_shape = 2807
 latent_dim = 8
-# parameters of the VAE model
 channels = (16, 32, 64, 128)
 strides = (4, 4, 4, 5)
 
@@ -104,7 +95,6 @@ class VAE(Model):
         return reconstruction
 
 
-##Encoder
 def encoder_model(
     input_shape=(2807, 1),
     channels=channels,
@@ -131,7 +121,6 @@ def encoder_model(
     return encoder_inputs, z_mean, z_log_var, z
 
 
-##Decoder
 def decoder_model(
     latent_dim=latent_dim, channels=channels[::-1], strides=strides[::-1], kernel_size=9
 ):
@@ -142,9 +131,7 @@ def decoder_model(
         kernel_regularizer=regularizers.L1L2(l1=1e-5, l2=1e-4),
         bias_regularizer=regularizers.L2(1e-4),
         activity_regularizer=regularizers.L2(1e-5),
-    )(
-        latent_inputs
-    )  ###Neu
+    )(latent_inputs)
     x = Reshape((10, 128))(x)
     for ch_n, str_n in zip(channels, strides):
         x = Conv1DTranspose(ch_n, kernel_size, padding="same", strides=str_n)(x)
@@ -153,7 +140,7 @@ def decoder_model(
         x = Conv1D(ch_n, kernel_size, padding="same", strides=1)(x)
         x = BatchNormalization()(x)
         x = Activation("relu")(x)
-    # final layer
+
     x = Conv1DTranspose(1, 1, activation="relu", padding="same")(x)
     x = Cropping1D(cropping=(0, 393))(x)
     decoded = x

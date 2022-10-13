@@ -5,9 +5,11 @@ One data-set example is provided in `data/`.
 
  -> Topic of the future is to add the functions that are required to produce training data.
 
-## 1. Variational Autoencoder
+## 1. Variational Autoencoder (VAE)
 
-You have to run this first.
+You have to run this first and you have the choice between:
+- Standart VAE
+- Beta VAE
 
 ## 2. Mapper
 

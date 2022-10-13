@@ -20,13 +20,13 @@ from tensorflow.keras.losses import (
 from tensorflow.keras.backend import random_normal
 from tensorflow.keras.metrics import Mean
 from tensorflow.keras.layers import Normalization
-import numpy as np
+
 
 normalizer = Normalization()
 
+# parameters of the VAE model
 input_shape = 2807
 latent_dim = 8
-# parameters of the VAE model
 channels = (16, 32, 64, 128)
 strides = (4, 4, 4, 5)
 
